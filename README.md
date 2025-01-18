@@ -1,2 +1,3 @@
-# top-calculator
-TOP's Project Calculator
+# TOP Calculator Project
+
+The final project of foundations' course.
