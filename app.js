@@ -1,6 +1,6 @@
-let num1 = null;
-let num2 = null;
-let operator = null;
+let num1 = '';
+let num2 = '';
+let operator = '';
 
 // Get HTML references
 const buttons = document.querySelectorAll('button:not([class="function"])');
@@ -24,35 +24,29 @@ eval.addEventListener('click', evalOperation)
 buttons.forEach(button => button.addEventListener('click', () => fillOperands(button.textContent)));
 
 function fillOperands(value) {
-  if(num1 !== null && operator === null && '+-/*'.includes(value)) {
+  if ((num1 !== '' && num1 !== '-') && '+-*/'.includes(value) && operator === '') {
     operator = value;
   }
-
-  console.log(num1);
-  if(!operator && !isNaN(value)) {
-    if (num1 === null) {
-      num1 = +value;
-    } else {
-      num1 = +`${num1}${value}`;
-    }
-  } else if(!!operator && !isNaN(value)) { 
-    if (num2 === null) {
-      num2 = +value;
-    } else {
-      num2 = +`${num2}${value}`;
-    }
-
-  }
   
-  display.textContent = `${num1} ${operator === null ? '' : operator} ${num2 === null? '' : num2}`;
+  if (operator === '') {
+    if (!isNaN(value) || value === '-' && num1 === '')
+    num1 += value; 
+  } else if (!isNaN(value)) {
+    num2 += value;
+  }
+
+  updateDisplay();
+}
+
+function updateDisplay() {
+  display.textContent = `${num1} ${operator} ${num2}`;
 }
 
 
-
 function reset() {
-  num1 = null;
-  num2 = null;
-  operator = null;
+  num1 = '';
+  num2 = '';
+  operator = '';
   display.textContent = '';
 }
 
@@ -74,5 +68,6 @@ function evalOperation() {
   }
 
   reset();
+  num1 = result;
   display.textContent = result;
 }
