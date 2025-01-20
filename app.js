@@ -15,7 +15,7 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 function operate(operation, a, b) {
-  return operation(a, b);
+  return operation(+a, +b);
 } 
 
 
@@ -30,9 +30,9 @@ function fillOperands(value) {
   
   if (operator === '') {
     if (!isNaN(value) || value === '-' && num1 === '')
-    num1 += value; 
+    num1 = isNaN(num1 + value)? num1 + value : +(num1 + value); 
   } else if (!isNaN(value)) {
-    num2 += value;
+    num2 += +value;
   }
 
   updateDisplay();
