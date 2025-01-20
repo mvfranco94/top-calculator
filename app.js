@@ -62,6 +62,15 @@ function evalOperation() {
     case '+':
       result = operate(add, num1, num2);
       break;
+    case '-':
+      result = operate(subtract, num1, num2);
+    break;
+    case '*':
+      result = operate(multiply, num1, num2);
+      break;
+    case '/':
+      result = operate(divide, num1, num2);
+    break;
   }
 
   reset();
