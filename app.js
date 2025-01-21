@@ -5,6 +5,7 @@ let operator = '';
 // Get HTML references
 const buttons = document.querySelectorAll('button:not([class="function"])');
 const display = document.querySelector('#display');
+const displayError = document.querySelector('#displayError');
 const clear = document.querySelector('#clear');
 const eval = document.querySelector('#eval');
 
@@ -16,7 +17,11 @@ const divide = (a, b) => a / b;
 
 function operate(operation, a, b) {
   return operation(+a, +b);
-} 
+}
+
+const errorsMsgs = {
+  divisionByZero: 'Division by 0? To infinity and beyond!!!',
+}
 
 
 clear.addEventListener('click', reset);
@@ -40,6 +45,14 @@ function fillOperands(value) {
 
 function updateDisplay() {
   display.textContent = `${num1} ${operator} ${num2}`;
+}
+
+function updateDisplayError(text) {
+  const p = document.createElement('p');
+  p.textContent = text;
+
+  displayError.innerHTML = '';
+  displayError.appendChild(p);
 }
 
 
@@ -67,6 +80,12 @@ function evalOperation() {
       result = operate(multiply, num1, num2);
       break;
     case '/':
+      console.log(num2);
+      if (+num2 === 0) {
+        reset();
+        updateDisplayError(errorsMsgs.divisionByZero);
+        return;
+      }
       result = operate(divide, num1, num2);
     break;
   }
