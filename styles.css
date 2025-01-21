@@ -1,0 +1,98 @@
+/* Reset css */
+*,
+::before,
+:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+/* main styles */
+body {
+  background: #17202a;
+}
+
+#display-error {
+  max-width : 500px;
+  height: 100px;
+  margin: 20px auto 0;
+  background: #f1948a;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  color: #eee;
+  align-items: center;
+  font-size: 2rem;
+  opacity: 0;
+}
+
+#display-error p {
+  text-align: center;
+}
+
+/* calculator */
+#calculator {
+  border: 3px solid #000;
+  max-width: 500px;
+  height: auto;
+  margin: 30px auto 0;
+  aspect-ratio: 2 / 2.5;
+  border-radius: 10px;
+  background: #121313;
+}
+
+#display {
+  height: 80px;
+  background: #4d5656;
+  margin: 15px;
+  border-radius: 10px;
+  color: black;
+  text-align: right;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 15px;
+}
+
+
+#calculator .buttons {
+  display: flex;
+  margin: 15px;
+  font-size: 3rem;
+}
+
+#calculator .numbers {
+  margin-right: auto;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: left;
+  
+}
+
+#calculator .numbers > *{
+  width: 33%;
+  border-radius: 5px;
+  font-size: 2rem;
+}
+
+#calculator .operators {
+  display: flex;
+  flex-basis: 20%;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#calculator .operators > * {
+  border-radius: 5px;
+  font-size: 2rem;
+  height: 80px;
+}
+

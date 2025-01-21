@@ -5,7 +5,7 @@ let operator = '';
 // Get HTML references
 const buttons = document.querySelectorAll('button:not([class="function"])');
 const display = document.querySelector('#display');
-const displayError = document.querySelector('#displayError');
+const displayError = document.querySelector('#display-error');
 const clear = document.querySelector('#clear');
 const eval = document.querySelector('#eval');
 
@@ -53,6 +53,9 @@ function updateDisplayError(text) {
 
   displayError.innerHTML = '';
   displayError.appendChild(p);
+  displayError.style.opacity = '1';
+
+  setTimeout(() => displayError.style.opacity = 0, 3000);
 }
 
 
