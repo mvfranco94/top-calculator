@@ -51,6 +51,10 @@ function reset() {
 }
 
 function evalOperation() {
+  if (num1 === '' || operator === '' || num2 === '') {
+    return;
+  }
+
   let result;  
   switch(operator) {
     case '+':
