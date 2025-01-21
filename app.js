@@ -68,6 +68,6 @@ function evalOperation() {
   }
 
   reset();
-  num1 = result;
-  display.textContent = result;
+  num1 = parseInt(result * 10 ** 8) / 10 ** 8;
+  updateDisplay();
 }
